@@ -6,7 +6,7 @@ const { generateSuggestions } = require('../utils/suggestionGenerator');
 exports.submitQuiz = async (req, res) => {
   try {
     const { quizId } = req.params;
-    const { answers, email } = req.body; // include email in request
+    const { answers, email } = req.body; // including email in request
     const username = req.user?.username || 'guest';
 
     const quiz = await Quiz.findById(quizId);
@@ -28,7 +28,7 @@ exports.submitQuiz = async (req, res) => {
 
     await submission.save();
 
-    // Email generation for suggestion
+    // Email generation for AI suggestions
     if (email) {
       const suggestions = await generateSuggestions(quiz.subject, score, quiz.maxScore);
       const emailBody = `

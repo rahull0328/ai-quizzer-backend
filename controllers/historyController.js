@@ -14,7 +14,7 @@ exports.getQuizHistory = async (req, res) => {
       if (to) filters.submittedAt.$lte = new Date(to);
     }
 
-    // Populate quiz data
+    // Populating the quiz data
     const submissions = await Submission.find(filters)
       .populate("quizId")
       .exec();
